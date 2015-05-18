@@ -9,11 +9,11 @@ var server     = require('gulp-webserver');
 var sass       = require('gulp-sass');
 var concat     = require('gulp-concat');
 var rename     = require('gulp-rename');
-var react      = require('gulp-react');
+var babel      = require('gulp-babel');
 var uglify     = require('gulp-uglify');
 var jshint     = require('gulp-jshint');
 
-var componentName = 'component';
+var componentName = 'collapsible';
 var config = {
     stylesWatch: './src/styles/**/*.scss',
     stylesEntry: './src/styles/' + componentName + '.scss',
@@ -26,7 +26,7 @@ var config = {
  */
 gulp.task('lint', function () {
   return gulp.src(config.componentEntry)
-    .pipe(react())
+    .pipe(babel())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -60,7 +60,7 @@ gulp.task('build:styles', function () {
  */
 gulp.task('build:npm', function () {
   return gulp.src(config.componentEntry)
-    .pipe(react())
+    .pipe(babel())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(rename(componentName + '.js'))
