@@ -1,5 +1,5 @@
 # react-collapsible
 
-> A collapsible component for react.
+> A React collapsible component.
 
 ### WIP
